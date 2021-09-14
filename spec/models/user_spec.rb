@@ -7,35 +7,64 @@ RSpec.describe User, type: :model do
 
   describe 'ユーザー新規登録' do
     context '新規登録できるとき' do
-      it 'email、encrypted_password、password_confirmation、name、profile、occupation、positionが存在すれば登録できる'
+      it 'email、password、password_confirmation、name、profile、occupation、positionが存在すれば登録できる' do
         expect(@user).to be_valid
       end
-      it 'passwordとpassword_confirmationが６文字以上なら登録できる'
+      it 'passwordとpassword_confirmationが６文字以上なら登録できる' do
         @user.password = '000000'
+        @user.password_confirmation = '000000'
         expect(@user).to be_valid
       end
     end
-    context '新規登録できないとき' do  
-      it 'emailが空だと登録できない'
-        
+    context '新規登録できないとき' do
+      it 'emailが空だと登録できない' do
+        @user.email = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email can't be blank")
       end
-      it 'emailが重複していると登録できない'
+      it 'emailが重複していると登録できない' do
+        @user.save
+        another_user = FactoryBot.build(:user)
+        another_user.email = @user.email
+        another_user.valid?
+        expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
-      it 'encrypted_passwordが空だと登録できない'
+      it 'passwordが空だと登録できない' do
+        @user.password = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password can't be blank")
       end
-      it 'encrypted_passwordは5文字以下だと登録できない'
+      it 'passwordは5文字以下だと登録できない' do
+        @user.password = '00000'
+        @user.password_confirmation = '00000'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
-      it 'password_confirmationが空だと登録できない'
+      it 'passwordとpassword_confirmationが一致していないと登録できない' do
+        @user.password = '000000'
+        @user.password_confirmation = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
-      it 'encrypted_passwordとpassword_confirmationが一致していないと登録できない'
+      it 'nameが空だと登録できない' do
+        @user.name = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Name can't be blank")
       end
-      it 'nameが空だと登録できない'
+      it 'profileが空だと登録できない' do
+        @user.profile = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Profile can't be blank")
       end
-      it 'profileが空だと登録できない'
+      it 'occupationが空だと登録できない' do
+        @user.occupation = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Occupation can't be blank")
       end
-      it 'occupationが空だと登録できない'
-      end
-      it 'positionが空だと登録できない'
+      it 'positionが空だと登録できない' do
+        @user.position = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Position can't be blank")
       end
     end
   end
