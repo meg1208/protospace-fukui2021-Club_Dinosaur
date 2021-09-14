@@ -4,6 +4,6 @@ class PrototypesController < ApplicationController
   end
 
   def new
-    @Prototype = Prototype.new
+    @prototype = Prototype.new
   end
 end
