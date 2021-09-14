@@ -6,5 +6,6 @@ class Prototype < ApplicationRecord
     validates :title
     validates :catch_copy
     validates :concept
+    validates :image
   end
 end
