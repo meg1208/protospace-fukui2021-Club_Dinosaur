@@ -8,8 +8,11 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    Prototype.create(prototype_params)
-    redirect_to action: 'index'
+    if Prototype.create(prototype_params)
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private
