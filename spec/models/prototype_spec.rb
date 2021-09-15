@@ -16,22 +16,22 @@ RSpec.describe Prototype, type: :model do
         @prototype.title = ''
         @prototype.valid?
         expect(@prototype.errors.full_messages).to include("Title can't be blank")
-      end     
+      end
       it 'catch_copyが空では投稿できない' do
         @prototype.catch_copy = ''
         @prototype.valid?
         expect(@prototype.errors.full_messages).to include("Catch copy can't be blank")
-      end     
+      end
       it 'conceptが空では投稿できない' do
         @prototype.concept = ''
         @prototype.valid?
         expect(@prototype.errors.full_messages).to include("Concept can't be blank")
-      end     
+      end
       it 'imageが空では投稿できない' do
         @prototype.image = nil
         @prototype.valid?
         expect(@prototype.errors.full_messages).to include("Image can't be blank")
-      end     
+      end
       it 'ユーザーが紐付いていなければ投稿できない' do
         @prototype.user = nil
         @prototype.valid?
