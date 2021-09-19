@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
     redirect_to "/prototypes/#{comment.prototype.id}"
   end
 
-
   private
 
   def comment_params
