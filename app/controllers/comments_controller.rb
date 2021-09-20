@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, only: [:create]
+  
   def create
     comment = Comment.create(comment_params)
     redirect_to "/prototypes/#{comment.prototype.id}"
