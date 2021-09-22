@@ -1,0 +1,25 @@
+<div class="main">
+  <div class="inner">
+    <div class="form__wrapper">
+    <h2 class="page-heading">住所情報登録</h2>
+      <%= form_for @address do |f| %>
+        <%= render "devise/shared/error_messages", resource: @address %>
+
+        <div class="field">
+          <%= f.label :postal_code, "郵便番号" %><br />
+          <%= f.text_field :postal_code %>
+        </div>
+
+        <div class="field">
+          <%= f.label :address, "住所" %><br />
+          <%= f.text_field :address %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "新規登録", class: :form__btn %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
