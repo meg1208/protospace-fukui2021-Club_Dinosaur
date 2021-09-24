@@ -3,31 +3,34 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 
 function previewImage() {
-  if (document.getElementById('prototype_image_preview')){
-    const imagePreview = document.getElementById('prototype_image_preview')
+  const prototype_image = document.getElementById('prototype_image')
+
+  // プロトタイプの画像選択フィールドがある場合のみ、以下処理を行う
+  if (prototype_image){
 
     // プロトタイプの画像変更時の処理
-    document.getElementById('prototype_image').addEventListener('change', function(e){
-      // 画像が表示されている場合のみ、すでに存在している画像を削除する
-      const imageContent = document.querySelector('img');
+    prototype_image.addEventListener('change', function(e){
+      
+      // プロトタイプの画像が表示されている場合のみ、すでに存在している画像を削除する
+      const imageContent = document.getElementById("image_content");
       if (imageContent) {
         imageContent.remove();
       }
       
+      // 画像表示領域の要素を取得
+      const image_section = document.getElementById('image_section')
+      // ファイル情報を取得
       const file = e.target.files[0]
+      // ファイルのURLを作成
       const blob = window.URL.createObjectURL(file)
-
-      // 画像を表示するためのdiv要素を生成
-      const imageElement = document.createElement('div')
 
       // 表示する画像を生成
       const blobImage = document.createElement('img')
+      blobImage.setAttribute('id', 'image_content')
       blobImage.setAttribute('src', blob)
 
       // 生成したHTMLの要素をブラウザに表示させる
-      imageElement.appendChild(blobImage)
-      imagePreview.appendChild(imageElement)
+      image_section.appendChild(blobImage)
     })
   }
 }
-
