@@ -6,6 +6,11 @@ ja:
         profile: プロフィール
         occupation: 所属 
         position: 役職
+      address:
+        postal_code: 郵便番号
+        address: 住所
+    models:
+      address: 住所情報
       prototype:
         title: プロトタイプの名称
         catch_copy: キャッチコピー
