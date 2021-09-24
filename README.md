@@ -15,6 +15,7 @@
 
 - has_many :prototypes
 - has_many :comments
+- has_one :address
 
 ## prototypes テーブル
 
@@ -41,4 +42,16 @@
 ### Association
 
 - belongs_to :prototype
+- belongs_to :user
+
+## address テーブル
+
+| Column       | Type       | Options                           |
+| -------      | ---------- | --------------------------------- |
+| postal_code  | integer    | null: false                       |
+| address      | string     | null: false                       |
+| user         | references | optional: true, foreign_key: true |
+
+### Association
+
 - belongs_to :user
