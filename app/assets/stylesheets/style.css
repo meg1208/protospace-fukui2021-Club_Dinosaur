@@ -95,6 +95,10 @@ a {
   margin: 10px 0;
 }
 
+.field_postal {
+  color: red; font-weight: bold;
+}
+
 .actions{
   margin-bottom: 40px;
 }

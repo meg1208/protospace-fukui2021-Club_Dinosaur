@@ -22,6 +22,14 @@
             <th class="table__col1">役職</th>
             <td class="table__col2"><%= @user.position %></td>
           </tr>
+          <tr>
+            <th class="table__col1">郵便番号</th>
+            <td class="table__col2"><%= @user.address.postal_code %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">住所</th>
+            <td class="table__col2"><%= @user.address.address %></td>
+          </tr>
         </tbody>
       </table>
       <h2 class="page-heading">

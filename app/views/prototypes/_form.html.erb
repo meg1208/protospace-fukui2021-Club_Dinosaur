@@ -18,6 +18,11 @@
   <div class="field">
     <%= f.label :image, "プロトタイプの画像" %><br />
     <%= f.file_field :image, id:"prototype_image" %>
+    <div id="image_section" class="prototype__image">
+      <% if !prototype.image.blank? %>
+        <%= image_tag prototype.image, id:"image_content"%>
+      <% end %>
+    </div>
   </div>
 
   <div class="actions">
