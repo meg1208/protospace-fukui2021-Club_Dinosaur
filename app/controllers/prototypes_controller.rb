@@ -4,7 +4,7 @@ class PrototypesController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
   
   def index
-    @prototypes = Prototype.includes(:user)
+    @prototypes = Prototype.includes(:user).order("updated_at DESC")
   end
 
   def new
@@ -22,7 +22,7 @@ class PrototypesController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @prototype.comments.includes(:user)
+    @comments = @prototype.comments.includes(:user).order("updated_at DESC")
   end
 
   def update
