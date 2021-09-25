@@ -1,5 +1,7 @@
 ja:
   activerecord:
+    models:
+      address: 住所情報
     attributes:
       user:
         name: ユーザー名
@@ -9,8 +11,6 @@ ja:
       address:
         postal_code: 郵便番号
         address: 住所
-    models:
-      address: 住所情報
       prototype:
         title: プロトタイプの名称
         catch_copy: キャッチコピー
