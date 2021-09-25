@@ -49,16 +49,16 @@ test:
 #
 
 # Herokuのデプロイ時に使用する(※AWS-EC2側はコメントアウトしておくこと)
-# production:
-  # <<: *default
-  # database: protospace_fukui2021_Club_Dinosaur_production
-  # username: protospace_fukui2021_Club_Dinosaur
-  # password: <%= ENV['PROTOSPACE_FUKUI2021_CLUB_DINOSAUR_DATABASE_PASSWORD'] %>
-
-# AWS-EC2のデプロイ時に使用する(※Heroku側はコメントアウトしておくこと)
 production:
   <<: *default
   database: protospace_fukui2021_Club_Dinosaur_production
-  username: root
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  socket: /var/lib/mysql/mysql.sock
+  username: protospace_fukui2021_Club_Dinosaur
+  password: <%= ENV['PROTOSPACE_FUKUI2021_CLUB_DINOSAUR_DATABASE_PASSWORD'] %>
+
+# AWS-EC2のデプロイ時に使用する(※Heroku側はコメントアウトしておくこと)
+# production:
+  # <<: *default
+  # database: protospace_fukui2021_Club_Dinosaur_production
+  # username: root
+  # password: <%= ENV['DATABASE_PASSWORD'] %>
+  # socket: /var/lib/mysql/mysql.sock
